@@ -1,4 +1,4 @@
-package com.example;
+package main.java.com.example;
 
 
 //LINKED LISTS
@@ -75,7 +75,7 @@ class DLL {
 
         Node last = head; // used when traversing so we start with the first
 
-        // this new node is going to be the last node so it has NULL as next
+        // this new node is going to be the last node, so it has NULL as next
         new_node.next = null;
 
         // if the linked list is empty make the new node as head
