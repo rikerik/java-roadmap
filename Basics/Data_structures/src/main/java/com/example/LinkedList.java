@@ -1,6 +1,5 @@
 package main.java.com.example;
 
-
 //LINKED LISTS
 //Search O(n)
 //implementation of Linked list
@@ -104,6 +103,37 @@ class DLL {
             System.out.println(n.data + " ");
             n = n.next;
         }
+    }
+}
+
+// Circular linked list
+class CircularLinkedList {
+    public Node head;
+
+    public CircularLinkedList() {
+        head = null;
+    }
+
+    // adding a node
+    public void add_node(int data) {
+        Node new_data = new Node(data);
+        if (head == null) {
+            //if head is null the new node is going to be the head
+            head = new_node;
+            //the new node which will always be the last in this context, is going to point to the head which is the first, so it goes around
+            new_node.next = head;
+            return;
+        }
+        // we use a new Node, named as 'current' to go through the list and insert the new node to its position
+        Node current = head;
+        while (current.next != head) {
+            current = current.next;
+        }
+        //when the current node points to the head node, we add the new node so it will point to the new
+        current.next = new_node;
+        // then we make the added new node to point to the head, so it will go in circle again
+        new_node.next = head;
+
     }
 }
 
