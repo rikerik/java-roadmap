@@ -14,7 +14,7 @@ class Student {
 public class Arrays {
     public static void main(String[] args) {
 
-        //ARRAYS
+        // ARRAYS
         // Time Complexity: O(n)
         // Auxiliary Space: O(1)
         // declaring an array of integers
@@ -50,22 +50,20 @@ public class Arrays {
         // cloning arrays
         int cloneArray[] = intArr.clone();
 
-        //false because of deep copy
+        // false because of deep copy
         System.out.println(intArr == cloneArray);
 
         for (int i = 0; i < cloneArray.length; i++) {
             System.out.println(cloneArray[i] + " ");
         }
 
-        //declaring & initializing 2D array
-        int twoDimArr[][]
-        = {{1,3,5}, {2,4,6}, {9,8,7}};
+        // declaring & initializing 2D array
+        int twoDimArr[][] = { { 1, 3, 5 }, { 2, 4, 6 }, { 9, 8, 7 } };
 
-        //print
-        for (int i = 0; i< 3; i++){
-            for (int j = 0; j<3; j++)
-            {
-                System.out.print(twoDimArr[i][j]+ " ");
+        // print
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(twoDimArr[i][j] + " ");
                 System.out.println();
 
             }
