@@ -8,5 +8,9 @@ public class Main {
         db1 = Database.getInstance();
 
         db1.getConnection();
+
+        //if we would have a db2 object
+        //we would still get the same database
+        //object with the getInstance() method
     }
 }
