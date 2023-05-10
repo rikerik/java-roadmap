@@ -38,5 +38,18 @@ public class NestedOOP {
         //using the name of the outer class
         MotherBoard.USB usb = new MotherBoard.USB();
         System.out.println("Total ports = " + usb.getTotalUSbPorts());
+
+        //STATIC NESTED CLASS
+
+        //object creation of outer class
+        Animal animal = new Animal();
+
+        //object creation of the non-static class
+        Animal.Reptile reptile = animal.new Reptile();
+        reptile.displayInfo();
+
+        //object creation of the static nested class
+        Animal.Mammal mammal = new Animal.Mammal();
+        mammal.displayInfo();
     }
 }
