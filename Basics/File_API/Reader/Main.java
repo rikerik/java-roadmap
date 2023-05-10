@@ -1,30 +1,34 @@
 package File_API.Reader;
 
-import java.io.FileReader;
-import java.io.Reader;
+import java.io.*;
 
-public class Main {
+import java.io.Reader;
+import java.io.FileReader;
+
+class Main {
     public static void main(String[] args) {
-    //Creates an array of character
+
+        // Creates an array of character
         char[] array = new char[100];
 
         try {
-            //creates a reader using the FileReader
+            // Creates a reader using the FileReader
             Reader input = new FileReader("input.txt");
 
-            //checks if reader is ready
-            System.out.println("Is there data in the stream? " + input.ready());
+            // Checks if reader is ready
+            System.out.println("Is there data in the stream?  " + input.ready());
 
-            //reads characters
+            // Reads characters
             input.read(array);
-            System.out.println("Data in the stream");
+            System.out.println("Data in the stream:");
             System.out.println(array);
 
-            //closes the reader
+            // Closes the reader
             input.close();
-
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-        catch (Exception e) { e.getStackTrace();}
+
 
     }
 }
