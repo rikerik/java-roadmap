@@ -2,10 +2,9 @@ package File_API.Reader;
 
 import java.io.*;
 
-import java.io.Reader;
 import java.io.FileReader;
 
-class Main {
+class Reader {
     public static void main(String[] args) {
 
         // Creates an array of character
@@ -13,7 +12,7 @@ class Main {
 
         try {
             // Creates a reader using the FileReader
-            Reader input = new FileReader("input.txt");
+            java.io.Reader input = new FileReader("input.txt");
 
             // Checks if reader is ready
             System.out.println("Is there data in the stream?  " + input.ready());
