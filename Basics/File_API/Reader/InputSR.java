@@ -2,6 +2,7 @@ package File_API.Reader;
 
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
 public class InputSR {
@@ -28,6 +29,29 @@ public class InputSR {
 
             //close the reader
             input.close();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        //get the type of encoding that
+        //is used to store data in the input stream.
+        try {
+            FileInputStream file = new FileInputStream("inputSR.txt");
+
+            //creates an InputStreamReader with default encoding
+            InputStreamReader input1 = new InputStreamReader(file);
+
+            //creates an InputStreamReader specifying the encoding
+            InputStreamReader input2 = new InputStreamReader(file, Charset.forName("UTF8"));
+
+            //returns the charater encoding of the input stream
+            System.out.println("Charater encoding of input1: " + input1.getEncoding());
+            System.out.println("Charater encoding of input2: " + input2.getEncoding());
+
+            //close the readers
+            input1.close();
+            input2.close();
 
         } catch (Exception e) {
             throw new RuntimeException(e);
