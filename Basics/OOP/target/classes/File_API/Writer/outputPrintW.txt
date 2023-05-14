@@ -1,0 +1,2 @@
+This line will be in the outputPrintW.txt file
+I am 20 years old
