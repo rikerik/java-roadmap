@@ -1,5 +1,7 @@
 package Generics;
 
+import java.util.ArrayList;
+
 /*
 Java Generics allows us to create a single class,
 interface, and method that can be used with different
@@ -41,6 +43,11 @@ public class Generics {
         //here we will get an error, because
         //we can only give numbers for parameter
 
+        // creating a string type ArrayList
+        ArrayList<String> list1 = new ArrayList<>();
+
+// creating a integer type ArrayList
+        ArrayList<Integer> list2 = new ArrayList<>();
 
     }
 }
