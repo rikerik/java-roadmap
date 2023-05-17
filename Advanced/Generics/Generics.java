@@ -39,7 +39,7 @@ public class Generics {
         //BOUNDED TYPES
 
         //create an object of BoundedTypes
-        BoundedTypes<String> obj = new BoundedTypes<String>();
+        //BoundedTypes<String> obj = new BoundedTypes<String>();
         //here we will get an error, because
         //we can only give numbers for parameter
 
