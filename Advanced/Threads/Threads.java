@@ -26,7 +26,26 @@ public class Threads {
         for (int i = 0; i < 5; i++) {
             Multithread mT = new Multithread(i);
             mT.start();
+
+
         }
+
+        //other useful methods
+    /*
+            try {
+                //it will wait until this thread terminate
+                //only after that will the other thread start
+                mT.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    */
+
+        //returns a Boolean true or false
+        //mT.isAlive();
+
+
         //even if we have trouble with the main thread
         // it won't affect the others
         throw new RuntimeException();
