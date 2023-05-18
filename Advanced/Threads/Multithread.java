@@ -1,7 +1,9 @@
 package Threads;
 
 //we can do it with implementing the Runnable interface
-//with slightly differences
+//with slight differences
+//this way we can implement more interfaces, and we can
+//extend from a different class
 public class Multithread extends Thread {
     //override the Thread class run() method
 
