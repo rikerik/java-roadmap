@@ -19,8 +19,8 @@ public class Threads {
     public static void main(String[] args) {
 
         //Create an object of the Multithread class
-        //Multithread mT = new Multithread();
-        //Multithread mT2 = new Multithread();
+        // Multithread mT = new Multithread();
+        // Multithread mT2 = new Multithread();
 
         //we do here five threads
         for (int i = 0; i < 5; i++) {
@@ -51,12 +51,19 @@ public class Threads {
         throw new RuntimeException();
 
 
+        //The number of services assigned to a given thread is referred to as its priority.
+        //Any thread generated in the JVM is given a priority.
+        //The priority scale runs from 1 to 10.
+        // mT.setPriority(Thread.MAX_PRIORITY);
+        //mT2.setPriority(Thread.MIN_PRIORITY);
+
+
         //java will start a new thread and will start the run() method
         //then a thread will start the main()
-        //mT.start();
+        // mT.start();
 
         //with this 2 different threads do the same counting
-        //mT2.start();
+        //   mT2.start();
 
 
         //if we do this the program won't use separate threads
