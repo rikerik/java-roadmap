@@ -21,7 +21,7 @@ Time-Based: Some Garbage Collection algorithms, such as G1 Garbage Collection, u
 
  */
 
-public class Garbage_collection {
+public class GarbageCollection {
 
     public static void main(String[] args) {
 
