@@ -19,6 +19,6 @@ public class ExpressionWithParameters {
         };
 
         //call the method of the interface
-        System.out.println("Lambda reversed = " + ref.reverse("Reverse test"));
+        System.out.println("Reverse test reversed = " + ref.reverse("Reverse test"));
     }
 }
