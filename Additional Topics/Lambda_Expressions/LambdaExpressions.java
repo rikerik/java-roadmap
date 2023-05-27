@@ -66,7 +66,7 @@ public class LambdaExpressions {
     //This type of the lambda body is known as a block body.
     //The block body allows the lambda body to include multiple statements.
     //These statements are enclosed inside the braces and you have to add a
-    //semi-colon after the braces.
+    //semicolon after the braces.
 
 
 }
