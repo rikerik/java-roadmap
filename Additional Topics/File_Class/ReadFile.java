@@ -9,7 +9,7 @@ public class ReadFile {
         char[] array = new char[100];
         try {
             //create a reader using the FileReader
-            FileReader input = new FileReader("File_Class/input.txt");
+            FileReader input = new FileReader("input.txt");
             //reads characters
             input.read(array);
             System.out.println("Data in the file");
