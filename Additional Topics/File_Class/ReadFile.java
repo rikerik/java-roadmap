@@ -4,6 +4,7 @@ import java.io.FileReader;
 
 public class ReadFile {
     public static void main(String[] args) {
+        //checking the working directory
         System.out.println("Current working directory: " + System.getProperty("user.dir"));
 
         char[] array = new char[100];
