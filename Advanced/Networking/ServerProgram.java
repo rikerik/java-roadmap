@@ -6,6 +6,17 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+/*
+    Server application makes a ServerSocket on a specific port which is 5000.
+    This starts our Server listening for client requests coming in for port 5000.
+    Then Server makes a new Socket to communicate with the client.
+
+    The accept() method blocks(just sits there) until a client connects to the server.
+    Then we take input from the socket using getInputStream() method.
+    Our Server keeps receiving messages until the Client sends “Over”.
+    After we’re done we close the connection by closing the socket and the input stream.
+ */
+
 class Server {
     //initialize socket az input stream
     private Socket socket = null;
@@ -52,6 +63,6 @@ class Server {
 
 public class ServerProgram {
     public static void main(String[] args) {
-        Server server = new Server(50000);
+        Server server = new Server(5000);
     }
 }
