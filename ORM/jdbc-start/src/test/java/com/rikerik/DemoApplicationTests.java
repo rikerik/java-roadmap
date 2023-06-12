@@ -1,4 +1,4 @@
-package com.amigoscode;
+package com.rikerik;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
