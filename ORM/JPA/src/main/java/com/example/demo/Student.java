@@ -3,8 +3,8 @@ package com.example.demo;
 
 import javax.persistence.*;
 
-@Entity(name = "Student")
-@Table(name = "Student",
+@Entity(name = "Student") // Entity annotation indicates that this class represents a persistent entity in the database
+@Table(name = "Student", // Table annotation provides details about the table associated with the entity
 uniqueConstraints = {
         @UniqueConstraint(name = "student_email_unique", columnNames = "email")
 }
@@ -12,15 +12,18 @@ uniqueConstraints = {
 public class Student {
 
     @Id
+    // SequenceGenerator annotation defines the sequence generator for generating unique IDs
     @SequenceGenerator(
             name = "student_sequence",
             sequenceName = "student_sequence",
             allocationSize = 1
     )
+    // GeneratedValue annotation indicates the strategy for generating the ID value
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
             generator = "student_sequence"
     )
+    // Column annotation provides details about the mapping of the field to the corresponding column
     @Column(
             name = "id",
             updatable = false
@@ -50,7 +53,7 @@ public class Student {
     )
     private Integer age;
 
-    public Student(Long id, String firstName, String lastName, String email, Integer age) {
+    public Student(String firstName, String lastName, String email, Integer age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
