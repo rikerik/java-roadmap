@@ -1,6 +1,12 @@
 package org.example;
 
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -21,7 +27,11 @@ public class HibernateFullTest {
 // and shared throughout the application. The SessionFactory handles configuration,
 // thread-safety, database connections, and session creation.
 
-    private SessionFactory sessionFactory;
+    //  private SessionFactory sessionFactory; //for hibernate
+    private EntityManagerFactory emf; //for jpa
+
+    //In the code I renamed the variables, so session became 'em' and sessionFactory became 'emf'
+
 
     @BeforeEach
     protected void setUp() throws Exception {
@@ -30,7 +40,7 @@ public class HibernateFullTest {
                 .configure() // configures settings from hibernate.cfg.xml
                 .build();
         try {
-            sessionFactory = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+            emf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
         } catch (Exception e) {
             // The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
             // so destroy it manually.
@@ -40,29 +50,48 @@ public class HibernateFullTest {
 
     @AfterEach
     protected void tearDown() throws Exception {
-        if (sessionFactory != null) {
-            sessionFactory.close();
+        if (emf != null) {
+            emf.close();
         }
     }
 
     @Test
     public void testBasicUsage() {
         User user = new User("Erik", LocalDate.now());
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        session.persist(user);
-        session.getTransaction().commit();
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(user);
+        em.getTransaction().commit();
     }
 
     @Test
     void hql_fetch_users() {
-        User user = new User("Erik", LocalDate.now());
-        Session session = sessionFactory.openSession();
-        session.beginTransaction();
-        List<User> users = session.createQuery("select u from User u", User.class)
-                .list(); //gets data from the class not from the table
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        List<User> users = em.createQuery("select u from User u", User.class)
+                .getResultList(); //gets data from the class not from the table
         users.forEach(System.out::println);
-        session.getTransaction().commit();
+        em.getTransaction().commit();
+    }
+
+
+    @Test
+    public void criteria_api(){
+        EntityManager em = emf.createEntityManager(); // Create an EntityManager instance
+        CriteriaBuilder cb = em.getCriteriaBuilder(); // Get a CriteriaBuilder
+
+        CriteriaQuery<User> criteriaQuery = cb.createQuery(User.class); // Create a CriteriaQuery for User entities
+        Root<User> root = criteriaQuery.from(User.class); // Define the root entity for the query
+
+        // Specify the selection and filtering criteria for the query
+        criteriaQuery.select(root) // Select the root entity (User)
+                .where(cb.equal(root.get(User_.NAME), "Erik")); // Filter based on the User's name
+
+        TypedQuery<User> query = em.createQuery(criteriaQuery); // Create a TypedQuery with the CriteriaQuery
+        List<User> results = query.getResultList(); // Execute the query and get the results
+        results.forEach(System.out::println); // Print each User object
+
+        em.close(); // Close the EntityManager
     }
 }
 

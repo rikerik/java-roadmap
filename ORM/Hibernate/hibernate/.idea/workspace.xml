@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aff3c0c-bfb2-41f5-8d8c-24cc8588000a.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aff3c0c-bfb2-41f5-8d8c-24cc8588000a.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/6aff3c0c-bfb2-41f5-8d8c-24cc8588000a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/6aff3c0c-bfb2-41f5-8d8c-24cc8588000a/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/org/example/HibernateFullTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/HibernateFullTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,7 +97,8 @@
       <option name="presentableId" value="Default" />
       <updated>1686987740926</updated>
       <workItem from="1686987742448" duration="1543000" />
-      <workItem from="1687015163399" duration="2011000" />
+      <workItem from="1687015163399" duration="2103000" />
+      <workItem from="1687033577761" duration="1603000" />
     </task>
     <servers />
   </component>
