@@ -3,6 +3,7 @@ package com.rikerik.dao;
 import com.rikerik.model.Course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
@@ -39,25 +40,36 @@ public class CourseJdbcDAO implements DAO<Course> {
     @Override
     public void create(Course course) {
         String sql = "insert into course(title,description,link) values(?,?,?)";
-       int insert = jdbcTemplate.update(sql, course.getTitle(), course.getDescription(), course.getLink());
-       if(insert ==1){
-           logger.info("New course created: "+course.getTitle());
-       }
+        int insert = jdbcTemplate.update(sql, course.getTitle(), course.getDescription(), course.getLink());
+        if (insert == 1) {
+            logger.info("New course created: " + course.getTitle());
+        }
 
     }
 
     @Override
     public Optional<Course> get(int id) {
-        return Optional.empty();
+        String sql = "SELECT course_id,title,description,link from course where course_id = ?";
+        Course course = null;
+        try {
+            course = jdbcTemplate.queryForObject(sql, new Object[]{id}, rowMapper);
+        } catch (DataAccessException dae) {
+            logger.info("Course not found: " + id);
+        }
+        return Optional.ofNullable(course);
     }
 
     @Override
     public void update(Course course, int id) {
-
+        String sql = "update course set title = ?, description = ?, link = ? where course_id = ?";
+        int update = jdbcTemplate.update(sql, course.getTitle(), course.getDescription(), course.getLink(), course.getCourseId());
+        if (update == 1) {
+            logger.info("Course updated: " + course.getTitle());
+        }
     }
 
     @Override
     public void delete(int id) {
-
+        jdbcTemplate.update("delete from course where course_id = ?",id);
     }
 }

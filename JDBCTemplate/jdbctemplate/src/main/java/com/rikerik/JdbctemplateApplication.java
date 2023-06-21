@@ -6,6 +6,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class JdbctemplateApplication {
@@ -23,6 +24,16 @@ public class JdbctemplateApplication {
         Course springVue = new Course("Spring Boot + Vue", "New Course", "https://www.examplelink.com");
         dao.create(springVue);
 
+        System.out.println("\n One Course -----------------------------------\n");
+        Optional<Course> firstOne = dao.get(1);
+        System.out.println(firstOne.get());
+
+        System.out.println("\n Update Course -----------------------------------\n");
+        springVue.setDescription("Changed description");
+        dao.update(springVue, 6);
+
+        System.out.println("\n Delete Course -----------------------------------\n");
+        dao.delete(4);
 
         System.out.println("\n All Courses -----------------------------------\n");
         List<Course> courses = dao.list();
