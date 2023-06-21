@@ -4,6 +4,7 @@ import com.rikerik.model.Course;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -15,6 +16,15 @@ public class CourseJdbcDAO implements DAO<Course> {
     private final static Logger logger = LoggerFactory.getLogger(CourseJdbcDAO.class);
     private JdbcTemplate jdbcTemplate;
 
+    RowMapper<Course> rowMapper = (rs, rowNum) -> {
+        Course course = new Course();
+        course.setCourseId(rs.getInt("course_id"));
+        course.setTitle(rs.getString("title"));
+        course.setDescription(rs.getString("description"));
+        course.setLink(rs.getString("link"));
+        return course;
+    };
+
     public CourseJdbcDAO(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -22,7 +32,8 @@ public class CourseJdbcDAO implements DAO<Course> {
 
     @Override
     public List<Course> list() {
-        return null;
+        String sql = "SELECT course_id, title, description, link from course";
+        return jdbcTemplate.query(sql, rowMapper);
     }
 
     @Override
